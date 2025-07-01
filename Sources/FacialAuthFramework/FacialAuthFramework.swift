@@ -64,46 +64,6 @@ internal struct TrueDepthCapabilities {
     }
 }
 
-// MARK: - Framework Configuration
-@available(iOS 14.0, *)
-public struct FacialAuthConfiguration {
-    
-    /// Nivel de seguridad del framework
-    public enum SecurityLevel: CaseIterable {
-        case basic      // Reconocimiento básico
-        case high       // + Anti-spoofing
-        case maximum    // + Liveness detection + Encriptación avanzada
-    }
-    
-    /// Configuración por defecto
-    public static let `default` = FacialAuthConfiguration()
-    
-    /// Nivel de seguridad (por defecto: high)
-    public let securityLevel: SecurityLevel
-    
-    /// Threshold de confianza para identificación (0.0 - 1.0)
-    public let confidenceThreshold: Float
-    
-    /// Permitir múltiples rostros en la imagen
-    public let allowMultipleFaces: Bool
-    
-    /// Timeout para operaciones de cámara (segundos)
-    public let cameraTimeout: TimeInterval
-    
-    /// Inicializador público
-    public init(
-        securityLevel: SecurityLevel = .high,
-        confidenceThreshold: Float = 0.85,
-        allowMultipleFaces: Bool = false,
-        cameraTimeout: TimeInterval = 10.0
-    ) {
-        self.securityLevel = securityLevel
-        self.confidenceThreshold = confidenceThreshold
-        self.allowMultipleFaces = allowMultipleFaces
-        self.cameraTimeout = cameraTimeout
-    }
-}
-
 // MARK: - Public API Preview (Interfaces que desarrollaremos)
 @available(iOS 14.0, *)
 public protocol FacialAuthDelegate: AnyObject {

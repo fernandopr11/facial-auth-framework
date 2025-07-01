@@ -117,7 +117,7 @@ internal final class FaceEmbeddingExtractor {
         print("🔍 Looking for model: '\(configuration.modelName).mlmodel'")
         
         // 1. Información de bundles
-        let frameworkBundle = Bundle(for: FaceEmbeddingExtractor.self)
+        let frameworkBundle = Bundle.module
         let mainBundle = Bundle.main
         
         print("🔍 Framework bundle: \(frameworkBundle.bundlePath)")
@@ -446,7 +446,7 @@ internal final class FaceEmbeddingExtractor {
                 ciContext.render(image, to: buffer)
                 
                 // Crear input para el modelo
-                guard let input = try? MLDictionaryFeatureProvider(dictionary: ["input": MLFeatureValue(pixelBuffer: buffer)]) else {
+                guard let input = try? MLDictionaryFeatureProvider(dictionary: ["image": MLFeatureValue(pixelBuffer: buffer)]) else {
                     continuation.resume(throwing: ExtractionError.preprocessingFailed)
                     return
                 }

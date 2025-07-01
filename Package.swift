@@ -1,12 +1,11 @@
 // swift-tools-version: 5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
-
 import PackageDescription
 
 let package = Package(
     name: "FacialAuthFramework",
     platforms: [
-        .iOS(.v14)  // SOLO iOS - nada de macOS
+        .iOS(.v14)
     ],
     products: [
         // Framework principal
@@ -31,7 +30,7 @@ let package = Package(
             ]
         ),
         
-        // Tests unitarios
+         //Tests unitarios
         .testTarget(
             name: "FacialAuthFrameworkTests",
             dependencies: ["FacialAuthFramework"],
